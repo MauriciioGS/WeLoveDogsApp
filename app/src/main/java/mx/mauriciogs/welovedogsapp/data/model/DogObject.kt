@@ -11,3 +11,4 @@ data class DogObject(
     @SerializedName("age") var age : Int,
     @SerializedName("image") var urlPhoto : String
 ) : Parcelable
+

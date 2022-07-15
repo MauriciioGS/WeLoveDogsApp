@@ -6,9 +6,8 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import mx.mauriciogs.welovedogsapp.R
-import mx.mauriciogs.welovedogsapp.data.model.DogObject
 import mx.mauriciogs.welovedogsapp.databinding.ActivityMainBinding
+import mx.mauriciogs.welovedogsapp.domain.model.Dog
 import mx.mauriciogs.welovedogsapp.ui.adapter.DogAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -39,14 +38,14 @@ class MainActivity : AppCompatActivity() {
             setRecyclerData(result)
         })
         dogsViewModel.loading.observe(this, Observer {
-            if (it) binding.loadingAnim.visibility = View.VISIBLE 
+            if (it) binding.loadingAnim.visibility = View.VISIBLE
             else binding.loadingAnim.visibility = View.GONE
         })
     }
 
-    private fun setRecyclerData(dogsList: List<DogObject>?) {
+    private fun setRecyclerData(dogsList: List<Dog>) {
         with(binding.recyclerView){
-            adapter = dogsList?.let { DogAdapter(it) }
+            adapter = DogAdapter(dogsList)
         }
     }
 

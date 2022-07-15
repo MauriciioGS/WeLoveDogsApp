@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import mx.mauriciogs.welovedogsapp.data.model.DogObject
 import mx.mauriciogs.welovedogsapp.databinding.ItemDogBinding
+import mx.mauriciogs.welovedogsapp.domain.model.Dog
 
-class DogAdapter(private val dogsList: List<DogObject>) : RecyclerView.Adapter<DogAdapter.DogsViewHolder>() {
+class DogAdapter(private val dogsList: List<Dog>) : RecyclerView.Adapter<DogAdapter.DogsViewHolder>() {
 
     class DogsViewHolder(private val itemBinding: ItemDogBinding) : RecyclerView.ViewHolder(itemBinding.root){
-        fun bind(dogObject: DogObject) {
+        fun bind(dogObject: Dog) {
             Glide.with(itemView.context)
                 .load(dogObject.urlPhoto)
                 .centerCrop()
