@@ -20,7 +20,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:translationZ="@dimen/cardview_default_elevation"
         android:background="@drawable/photo_rounded"
-        tools:scaleType="centerCrop"
         tools:src="@tools:sample/avatars"
         tools:ignore="ContentDescription" />
 
