@@ -2,6 +2,7 @@ package mx.mauriciogs.welovedogsapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         dogsViewModel.loadDogs()
         initBinding()
-        initObserver()
+        initObservers()
     }
 
     private fun initBinding() {
@@ -33,9 +34,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun initObserver() {
+    private fun initObservers() {
         dogsViewModel.getDogs().observe(this, Observer { result ->
             setRecyclerData(result)
+        })
+        dogsViewModel.loading.observe(this, Observer {
+            if (it) binding.loadingAnim.visibility = View.VISIBLE 
+            else binding.loadingAnim.visibility = View.GONE
         })
     }
 
